@@ -8,7 +8,12 @@ const ProfileSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'user'
+      default: 'user',
+      required: 1
+    },
+    country: {
+      type: String,
+      required: 1
     }
   },
   { timestamps: true }

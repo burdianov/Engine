@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Signup = props => {
   const [formData, setFormData] = useState({
@@ -17,12 +18,12 @@ const Signup = props => {
     });
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
       console.log('Passwords do not match');
     } else {
-      console.log(formData);
+      console.log('success');
     }
   };
 
@@ -105,12 +106,15 @@ const Signup = props => {
               placeholder='Confirm Password'
               required
             />
-            <div>
-              <button className='btn btn-primary mt-3'>Submit</button>
+            <div className='col text-right pr-0'>
+              <button className='btn btn-primary mt-3'>Register</button>
             </div>
           </div>
         </div>
       </form>
+      <div className='my-1'>
+        Already have an account? <Link to='/login'>Login</Link>
+      </div>
     </div>
   );
 };

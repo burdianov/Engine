@@ -19,6 +19,8 @@ app.use(express.json({ extended: false }));
 
 // import routes
 app.use('/api/user', require('./routes/auth'));
+app.use('/api/user', require('./routes/profile'));
+
 app.use('/api/user', require('./routes/info'));
 
 app.listen(PORT, () => {

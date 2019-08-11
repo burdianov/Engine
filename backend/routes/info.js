@@ -1,14 +1,11 @@
 const router = require('express').Router();
-const auth = require('../utils/verifyToken');
+const auth = require('../middleware/auth');
+const Profile = require('../models/Profile');
 
 router.get('/me', auth, async (req, res) => {
-  const user = await User.findOne({ _id: req.user });
+  const profile = await Profile.findOne({ user: req.user.id });
 
-  if (user) {
-    return res.status(200).send(user);
-  }
-
-  return res.send('Nothing promissing...');
+  res.json(profile);
 });
 
 module.exports = router;
