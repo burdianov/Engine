@@ -72,7 +72,7 @@ const Login = props => {
         </div>
       </form>
       <div className='my-1'>
-        Don't have an account? <Link to='/signup'>Sign Un</Link>
+        Don't have an account? <Link to='/register'>Sign Un</Link>
       </div>
     </div>
   );

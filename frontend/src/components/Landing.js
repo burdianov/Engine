@@ -10,7 +10,7 @@ const Landing = props => {
         себе последний шанс - навестите наш сайт.
       </p>
       <div className='text-center'>
-        <Link to='/signup' className='btn btn-primary'>
+        <Link to='/register' className='btn btn-primary'>
           Sign Up
         </Link>
         <Link to='/login' className='btn btn-success ml-2'>

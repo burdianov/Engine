@@ -33,7 +33,7 @@ const Navbar = props => {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link className='nav-link' to='/signup'>
+            <Link className='nav-link' to='/register'>
               Signup
             </Link>
           </li>
