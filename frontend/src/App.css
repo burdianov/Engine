@@ -1,3 +1,8 @@
 .fas {
   font-size: 1.5em;
 }
+.form-wrapper {
+  min-width: 36rem;
+  max-width: 36rem;
+  margin: 1rem auto 0 auto;
+}
