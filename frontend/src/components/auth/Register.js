@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../redux/action-creators/alert';
+import { register } from '../../redux/action-creators/auth';
+import PropTypes from 'prop-types';
 
-const Register = props => {
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,9 +25,9 @@ const Register = props => {
   const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
-      console.log('Passwords do not match');
+      setAlert('Passwords do not match', 'danger');
     } else {
-      console.log('success');
+      register({ name, email, password });
     }
   };
 
@@ -51,7 +55,7 @@ const Register = props => {
               placeholder='Enter Name'
               value={name}
               onChange={onChange}
-              required
+              // required
             />
             <small className='form-text text-muted'>Error messages here</small>
           </div>
@@ -69,7 +73,7 @@ const Register = props => {
               value={email}
               onChange={onChange}
               placeholder='Enter email'
-              required
+              // required
             />
             <small className='form-text text-muted'>Error messages here</small>
           </div>
@@ -87,7 +91,7 @@ const Register = props => {
               value={password}
               onChange={onChange}
               placeholder='Password'
-              required
+              // required
             />
           </div>
         </div>
@@ -104,7 +108,7 @@ const Register = props => {
               value={password2}
               onChange={onChange}
               placeholder='Confirm Password'
-              required
+              // required
             />
             <div className='col text-right pr-0'>
               <button className='btn btn-primary mt-3'>Register</button>
@@ -119,4 +123,12 @@ const Register = props => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { setAlert, register }
+)(Register);
