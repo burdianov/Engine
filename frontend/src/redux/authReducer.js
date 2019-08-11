@@ -1,5 +1,3 @@
-import { authAPI } from '../api/api';
-
 const initialState = {};
 
 const authReducer = (state = initialState, action) => {

@@ -1,20 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Landing = props => {
   return (
-    <section className='container mt-5'>
-      <h1>Engine</h1>
-      <p className='lead'>
+    <section className='mt-5'>
+      <h1 className='text-center'>Engine</h1>
+      <p className='lead container'>
         Перед тем как полностью завязать с изучением английского языка, дайте
         себе последний шанс - навестите наш сайт.
       </p>
-      <div>
-        <a href='signup.html' className='btn btn-primary'>
+      <div className='text-center'>
+        <Link to='/signup' className='btn btn-primary'>
           Sign Up
-        </a>
-        <a href='signin.html' className='btn btn-success ml-2'>
+        </Link>
+        <Link to='/login' className='btn btn-success ml-2'>
           Login
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -1,12 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = props => {
   return (
     <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
-      <a className='navbar-brand' href='/'>
-        <i className='fas fa-headphones mr-2' />
-        Engine
-      </a>
+      <ul className='navbar-nav mr-auto'>
+        <li className='nav-item'>
+          <Link className='navbar-brand nav-link' to='/'>
+            <i className='fas fa-school mr-2' />
+            Engine
+          </Link>
+        </li>
+      </ul>
+
       <button
         className='navbar-toggler'
         type='button'
@@ -20,32 +26,21 @@ const Navbar = props => {
       </button>
 
       <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-        <ul className='navbar-nav mr-auto'>
+        <ul className='navbar-nav ml-auto'>
           <li className='nav-item active'>
-            <a className='nav-link' href='#'>
-              Profile <span className='sr-only'>(current)</span>
-            </a>
+            <Link className='nav-link' to='profile.html'>
+              Profile
+            </Link>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='#'>
-              Register
-            </a>
+            <Link className='nav-link' to='/signup'>
+              Signup
+            </Link>
           </li>
           <li className='nav-item'>
-            <a className='nav-link' href='#'>
+            <Link className='nav-link' to='/login'>
               Login
-            </a>
-          </li>
-
-          <li className='nav-item'>
-            <a
-              className='nav-link disabled'
-              href='#'
-              tabIndex='-1'
-              aria-disabled='true'
-            >
-              Disabled
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
