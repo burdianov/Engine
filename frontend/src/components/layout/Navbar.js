@@ -7,7 +7,7 @@ const Navbar = props => {
       <ul className='navbar-nav mr-auto'>
         <li className='nav-item'>
           <Link className='navbar-brand nav-link' to='/'>
-            <i className='fas fa-school mr-2' />
+            <i className='fas fa-school mr-2 logo' />
             Engine
           </Link>
         </li>
