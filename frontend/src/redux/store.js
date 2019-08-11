@@ -1,12 +1,17 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import authReducer from './authReducer';
+import rootReducer from './reducers';
 
-const reducers = combineReducers({
-  auth: authReducer
-});
+const initialState = {};
 
-const store = createStore(reducers, applyMiddleware(thunk));
+const middlware = [thunk];
+
+const store = createStore(
+  rootReducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middlware))
+);
 
 // for debugging purpose
 window.store = store;
