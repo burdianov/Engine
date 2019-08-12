@@ -1,6 +1,9 @@
 {
-  "name": "backend",
+  "name": "enggym",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.7.0"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {
