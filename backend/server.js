@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 
 // configure dotenv for environment variables access
 const dotenv = require('dotenv');
@@ -21,7 +22,15 @@ app.use(express.json({ extended: false }));
 app.use('/api/user', require('./routes/auth'));
 app.use('/api/user', require('./routes/profile'));
 
-app.use('/api/user', require('./routes/info'));
+// serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  // set static folder
+  app.use(express.static('../frontend/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontent', 'build', 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
