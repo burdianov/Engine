@@ -25,7 +25,7 @@ const EditProfile = ({
       country: loading || !profile.country ? '' : profile.country,
       education: loading || !profile.education ? '' : profile.education
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const { country, education } = formData;
 
@@ -46,7 +46,7 @@ const EditProfile = ({
     <div className='form-wrapper'>
       <div className='row'>
         <div className='col-sm-10 offset-sm-2'>
-          <h1 className='h1 text-primary'>Create Your Profile</h1>
+          <h1 className='h1 text-primary'>Edit Your Profile</h1>
           <p className='lead'>
             <i className='fas fa-user' /> Let's get some useful information
           </p>
@@ -91,7 +91,7 @@ const EditProfile = ({
             />
             <small className='form-text text-muted'>Error messages here</small>
             <div className='col text-right pr-0'>
-              <button className='btn btn-primary mt-3'>Create Profile</button>
+              <button className='btn btn-primary mt-3'>Submit</button>
             </div>
           </div>
         </div>

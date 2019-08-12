@@ -72,7 +72,7 @@ router.post(
       // for production, set expiresIn to 3600
       jwt.sign(
         payload,
-        process.env.TOKEN_SECRET,
+        process.env.JWT_TOKEN_SECRET,
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
@@ -131,7 +131,7 @@ router.post(
       // for production, set expiresIn to 3600
       jwt.sign(
         payload,
-        process.env.TOKEN_SECRET,
+        process.env.JWT_TOKEN_SECRET,
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;

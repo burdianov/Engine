@@ -8,7 +8,7 @@ const app = express();
 app.disable('x-powered-by');
 
 // connect to the database
-const connectDB = require('./config/db');
+const connectDB = require('./utils/db');
 connectDB();
 
 const PORT = process.env.PORT || 5000;
