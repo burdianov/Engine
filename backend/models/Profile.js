@@ -8,8 +8,7 @@ const ProfileSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'user',
-      required: 1
+      default: 'user'
     },
     country: {
       type: String,

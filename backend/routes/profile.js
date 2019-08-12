@@ -14,9 +14,6 @@ router.post(
   [
     auth,
     [
-      check('role', 'Role is required')
-        .not()
-        .isEmpty(),
       check('country', 'Country is required')
         .not()
         .isEmpty()

@@ -1,12 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+import {
+  createProfile,
+  getCurrentProfile
+} from '../../redux/action-creators/profile';
 
-const CreateProfile = props => {
+const EditProfile = ({
+  profile: { profile, loading },
+  createProfile,
+  getCurrentProfile,
+  history
+}) => {
   const [formData, setFormData] = useState({
-    // country,
-    // education
+    country: '',
+    education: ''
   });
+
+  useEffect(() => {
+    getCurrentProfile();
+
+    setFormData({
+      country: loading || !profile.country ? '' : profile.country,
+      education: loading || !profile.education ? '' : profile.education
+    });
+  }, [loading]);
 
   const { country, education } = formData;
 
@@ -20,7 +39,7 @@ const CreateProfile = props => {
   const onSubmit = async e => {
     e.preventDefault();
 
-    // register({ country, education });
+    createProfile(formData, history, true);
   };
 
   return (
@@ -52,16 +71,6 @@ const CreateProfile = props => {
               <option value='USA'>USA</option>
               <option value='Spain'>Spain</option>
             </select>
-            {/* <input
-              type='text'
-              className='form-control'
-              id='country'
-              name='country'
-              placeholder='Enter Country'
-              value={country}
-              onChange={onChange}
-              // required
-            /> */}
             <small className='form-text text-muted'>Error messages here</small>
           </div>
         </div>
@@ -87,10 +96,27 @@ const CreateProfile = props => {
           </div>
         </div>
       </form>
+      <Link className='btn btn-light' to='/dashboard'>
+        Go Back
+      </Link>
     </div>
   );
 };
 
-CreateProfile.propTypes = {};
+EditProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
+};
 
-export default connect()(CreateProfile);
+const mapStateToProps = state => ({
+  profile: state.profile
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    createProfile,
+    getCurrentProfile
+  }
+)(withRouter(EditProfile));
