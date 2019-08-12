@@ -8,6 +8,11 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul className='navbar-nav ml-auto'>
       <li className='nav-item'>
+        <Link className='nav-link' to='profile.html'>
+          Profile
+        </Link>
+      </li>
+      <li className='nav-item'>
         <a className='nav-link' onClick={logout} href='#!'>
           <i className='fas fa-sign-out-alt' />
           <span className='d-none d-sm-inline'> Logout</span>
@@ -18,11 +23,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <ul className='navbar-nav ml-auto'>
-      <li className='nav-item'>
-        <Link className='nav-link' to='profile.html'>
-          Profile
-        </Link>
-      </li>
       <li className='nav-item'>
         <Link className='nav-link' to='/register'>
           Register
