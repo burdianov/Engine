@@ -1,4 +1,8 @@
-import { GET_PROFILE, PROFILE_ERROR } from '../action-creators/actionTypes';
+import {
+  GET_PROFILE,
+  PROFILE_ERROR,
+  CLEAR_PROFILE
+} from '../action-creators/actionTypes';
 
 const initialState = {
   profile: null,
@@ -20,6 +24,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         error: payload,
+        loading: false
+      };
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
         loading: false
       };
     default:

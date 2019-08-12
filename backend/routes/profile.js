@@ -27,13 +27,14 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { role, country } = req.body;
+    const { role, country, education } = req.body;
 
     const profileFields = {};
 
     profileFields.user = req.user.id;
     if (role) profileFields.role = role;
     if (country) profileFields.country = country;
+    if (education) profileFields.education = education;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });

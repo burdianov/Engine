@@ -8,8 +8,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <ul className='navbar-nav ml-auto'>
       <li className='nav-item'>
-        <Link className='nav-link' to='profile.html'>
-          Profile
+        <Link className='nav-link' to='/dashboard'>
+          <i className='fas fa-user' />
+          <span className='d-none d-sm-inline'> Dashboard</span>
         </Link>
       </li>
       <li className='nav-item'>
@@ -37,7 +38,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 
   return (
-    <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
+    <nav className='navbar navbar-expand-md navbar-dark bg-dark mb-2'>
       <ul className='navbar-nav mr-auto'>
         <li className='nav-item'>
           <Link className='navbar-brand nav-link' to='/'>

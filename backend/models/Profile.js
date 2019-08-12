@@ -14,6 +14,9 @@ const ProfileSchema = new mongoose.Schema(
     country: {
       type: String,
       required: 1
+    },
+    education: {
+      type: String
     }
   },
   { timestamps: true }
