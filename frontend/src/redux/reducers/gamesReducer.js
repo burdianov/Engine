@@ -6,7 +6,7 @@ import {
 } from '../action-creators/actionTypes';
 import shuffle from '../../utils/shuffle';
 
-const initialState = [];
+const initialState = { engId: '', rusId: '', wordsEng: [], wordsRus: [] };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;

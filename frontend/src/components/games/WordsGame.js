@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import {
   removeGuessedWord,
   setEngId,
-  setRusId
+  setRusId,
+  getWordsFromServer
 } from './../../redux/action-creators/games';
 
 const WordsGame = ({
+  getWordsFromServer,
   engId,
   rusId,
   removeGuessedWord,
@@ -16,6 +18,10 @@ const WordsGame = ({
   wordsEng,
   wordsRus
 }) => {
+  useEffect(() => {
+    getWordsFromServer();
+  }, []);
+
   let words = [];
 
   for (let i = 0; i < wordsEng.length; i++) {
@@ -82,6 +88,7 @@ WordsGame.propTypes = {
   engId: PropTypes.string.isRequired,
   rusId: PropTypes.string.isRequired,
   removeGuessedWord: PropTypes.func.isRequired,
+  getWordsFromServer: PropTypes.func.isRequired,
   setEngId: PropTypes.func.isRequired,
   setRusId: PropTypes.func.isRequired
 };
@@ -95,5 +102,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { removeGuessedWord, setEngId, setRusId }
+  { removeGuessedWord, setEngId, setRusId, getWordsFromServer }
 )(WordsGame);
