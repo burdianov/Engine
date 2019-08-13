@@ -1,10 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getWordsFromServer } from './../../redux/action-creators/games';
 
-const Games = ({ getWordsFromServer }) => {
+const Games = () => {
   return (
     <div className='dash-buttons'>
       <Link to='/words-game' className='btn btn-light'>
@@ -12,10 +9,6 @@ const Games = ({ getWordsFromServer }) => {
       </Link>
     </div>
   );
-};
-
-Games.propTypes = {
-  getWordsFromServer: PropTypes.func.isRequired
 };
 
 export default Games;

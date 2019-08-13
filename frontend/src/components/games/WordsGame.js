@@ -20,7 +20,7 @@ const WordsGame = ({
 }) => {
   useEffect(() => {
     getWordsFromServer();
-  }, []);
+  }, [getWordsFromServer]);
 
   let words = [];
 
@@ -51,27 +51,27 @@ const WordsGame = ({
   };
 
   return (
-    <div className='text-center'>
+    <div>
       <h1 className='text-center'>Words</h1>
 
       {words.map(word => (
-        <div className='row' key={word.engId}>
+        <div className='row justify-content-center' key={word.engId}>
           <div className='col-3'>
             <button
               name='eng'
               onClick={() => handleClick(`eng${word.engId}`)}
-              className={`btn w-75 font-weight-bold mt-2 ${
+              className={`btn guess-word font-weight-bold mt-2 ${
                 word.engId === engId ? 'btn-success' : 'btn-info'
               }`}
             >
               {word.eng}
             </button>
           </div>
-          <div className='col-3'>
+          <div className='col-3 offset-2'>
             <button
               name='rus'
               onClick={() => handleClick(`rus${word.rusId}`)}
-              className={`btn w-75 font-weight-bold mt-2 ${
+              className={`btn guess-word font-weight-bold mt-2 ${
                 word.rusId === rusId ? 'btn-success' : 'btn-primary'
               }`}
             >

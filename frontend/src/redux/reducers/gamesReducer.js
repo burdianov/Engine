@@ -15,7 +15,7 @@ export default (state = initialState, action) => {
     case GET_WORDS_FROM_SERVER:
       const engWords = [];
       const rusWords = [];
-      payload.map(word => {
+      payload.forEach(word => {
         engWords.push({ engId: word._id, eng: word.eng });
         rusWords.push({ rusId: word._id, rus: word.rus });
       });

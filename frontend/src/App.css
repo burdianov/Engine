@@ -12,3 +12,6 @@ a:hover {
 audio {
   display: none;
 }
+.guess-word {
+  width: 10rem;
+}
