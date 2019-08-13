@@ -7,11 +7,12 @@ const DashboardActions = () => {
       <Link to='/edit-profile' className='btn btn-light'>
         <i className='fas fa-user-circle text-primary' /> Edit Profile
       </Link>
-      <Link to='add-experience.html' className='btn btn-light'>
-        <i className='fab fa-black-tie text-primary' /> Add Experience
+      <Link to='/classroom' className='btn btn-light'>
+        <i className='fas fa-chalkboard-teacher text-primary' /> Got to
+        Classroom
       </Link>
-      <Link to='add-education.html' className='btn btn-light'>
-        <i className='fas fa-graduation-cap text-primary' /> Add Education
+      <Link to='/games' className='btn btn-light'>
+        <i className='fas fa-gamepad text-primary' /> Go to Games
       </Link>
     </div>
   );

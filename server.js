@@ -19,8 +19,11 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json({ extended: false }));
 
 // import routes
-app.use('/api/user', require('./routes/auth'));
-app.use('/api/user', require('./routes/profile'));
+app.use('/api/user', require('./routes/user/auth'));
+app.use('/api/user', require('./routes/user/profile'));
+app.use('/api/user', require('./routes/user/dictionary'));
+
+app.use('/api/admin', require('./routes/admin/dictionary'));
 
 // serve static assets in production
 if (process.env.NODE_ENV === 'production') {

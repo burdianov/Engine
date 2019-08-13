@@ -7,13 +7,11 @@ const Landing = ({ isAuthenticated }) => {
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />;
   }
+
   return (
     <section className='mt-5'>
       <h1 className='text-center'>Engine</h1>
-      <p className='lead container'>
-        Перед тем как полностью завязать с изучением английского языка, дайте
-        себе последний шанс - навестите наш сайт.
-      </p>
+      <p className='lead container'>Добро пожаловать на наш сайт!</p>
       <div className='text-center'>
         <Link to='/register' className='btn btn-primary'>
           Sign Up
