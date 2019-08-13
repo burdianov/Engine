@@ -17,6 +17,7 @@ import store from './redux/store';
 import Games from './components/games/Games';
 import Classroom from './components/classroom/Classroom';
 import WordsGame from './components/games/WordsGame';
+import NotFound from './components/NotFound';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -31,10 +32,10 @@ const App = () => {
     <Provider store={store}>
       <div className='App'>
         <Navbar />
-        <Route exact path='/' component={Landing} />
         <section className='container'>
           <Alert />
           <Switch>
+            <Route exact path='/' component={Landing} />
             <Route exact path='/register' component={Register} />
             <Route exact path='/login' component={Login} />
             <PrivateRoute exact path='/games' component={Games} />
@@ -47,6 +48,7 @@ const App = () => {
               component={CreateProfile}
             />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />
+            <Route component={NotFound} />
           </Switch>
         </section>
       </div>
