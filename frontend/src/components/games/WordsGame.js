@@ -51,7 +51,7 @@ const WordsGame = ({
   };
 
   return (
-    <div>
+    <div className='page'>
       <h1 className='text-center'>Words</h1>
 
       {words.map(word => (
