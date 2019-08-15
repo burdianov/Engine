@@ -1,16 +1,16 @@
-import axios from 'axios';
+import axios from "axios";
 
 import {
   GET_WORDS_FROM_SERVER,
-  REMOVE_GUESSED_WORD,
+  SET_GUESSED_WORD,
   SET_ENG_ID,
   SET_RUS_ID
-} from './actionTypes';
+} from "./actionTypes";
 
 // get words from dictionary
 export const getWordsFromServer = () => async dispatch => {
   try {
-    const res = await axios.get('/api/user/dictionary');
+    const res = await axios.get("/api/user/dictionary");
 
     dispatch({
       type: GET_WORDS_FROM_SERVER,
@@ -22,10 +22,10 @@ export const getWordsFromServer = () => async dispatch => {
 };
 
 // remove guessed word from redux state
-export const removeGuessedWord = wordId => async dispatch => {
+export const setGuessedWord = wordId => async dispatch => {
   try {
     dispatch({
-      type: REMOVE_GUESSED_WORD,
+      type: SET_GUESSED_WORD,
       payload: wordId
     });
   } catch (err) {
