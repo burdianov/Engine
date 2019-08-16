@@ -32,8 +32,9 @@ const WordsGame = ({
       to: {
         opacity: !item.guessed ? 1 : 0,
         height: !item.guessed ? 50 : 0,
-        margin: !item.guessed ? 0 : 0,
-        marginBottom: !item.guessed ? 0 : 0
+        marginTop: !item.guessed ? 5 : 0,
+        color: !item.guessed ? "black" : "white",
+        display: !item.guessed ? "flex" : "none"
       }
     }))
   );
@@ -41,15 +42,13 @@ const WordsGame = ({
   const springsRus = useSprings(
     wordsRus.length,
     wordsRus.map(item => ({
-      from: {
-        opacity: 0
-      },
+      from: {},
       to: {
         opacity: !item.guessed ? 1 : 0,
         height: !item.guessed ? 50 : 0,
-        marginTop: !item.guessed ? 0 : 0,
-        marginBottom: !item.guessed ? 0 : 0,
+        marginTop: !item.guessed ? 5 : 0,
         color: !item.guessed ? "black" : "white"
+        // display: !item.guessed ? "flex" : "none"
       }
     }))
   );
