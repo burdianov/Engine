@@ -15,3 +15,4 @@ export const GET_WORDS_FROM_SERVER = "GET_WORDS";
 export const SET_GUESSED_WORD = "REMOVE_GUESSED_WORDS";
 export const SET_ENG_ID = "SET_ENG_ID";
 export const SET_RUS_ID = "SET_RUS_ID";
+export const SET_GAME_OVER = "SET_GAME_OVER";

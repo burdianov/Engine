@@ -4,7 +4,8 @@ import {
   GET_WORDS_FROM_SERVER,
   SET_GUESSED_WORD,
   SET_ENG_ID,
-  SET_RUS_ID
+  SET_RUS_ID,
+  SET_GAME_OVER
 } from "./actionTypes";
 
 // get words from dictionary
@@ -49,6 +50,16 @@ export const setRusId = rusId => async dispatch => {
     dispatch({
       type: SET_RUS_ID,
       payload: rusId
+    });
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
+export const setGameOver = () => async dispatch => {
+  try {
+    dispatch({
+      type: SET_GAME_OVER
     });
   } catch (err) {
     console.error(err.message);

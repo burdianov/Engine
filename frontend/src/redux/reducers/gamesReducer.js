@@ -4,10 +4,17 @@ import {
   GET_WORDS_FROM_SERVER,
   SET_GUESSED_WORD,
   SET_ENG_ID,
-  SET_RUS_ID
+  SET_RUS_ID,
+  SET_GAME_OVER
 } from "../action-creators/actionTypes";
 
-const initialState = { engId: "", rusId: "", wordsEng: [], wordsRus: [] };
+const initialState = {
+  engId: "",
+  rusId: "",
+  wordsEng: [],
+  wordsRus: [],
+  gameOver: false
+};
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
@@ -57,6 +64,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         rusId: payload
+      };
+    }
+    case SET_GAME_OVER: {
+      return {
+        ...state,
+        gameOver: true
       };
     }
     default:
