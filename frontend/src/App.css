@@ -13,20 +13,22 @@ audio {
   display: none;
 }
 
-.cards {
+.words-to-guess {
   display: flex;
   flex-direction: row;
 }
 
-.cards-row {
+.words-to-guess-row {
   width: 30%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
 }
 
-.card {
+.word-to-guess {
   width: 10rem;
   height: 30px;
   background-color: mediumseagreen;
@@ -40,7 +42,7 @@ audio {
   font-weight: 600;
 }
 
-.card:hover {
+.word-to-guess:hover {
   cursor: pointer;
   /* border: 2px solid #ccc; */
   box-shadow: 3px 3px 7px #ccc;
@@ -48,7 +50,12 @@ audio {
 }
 
 .game-over {
-  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  background: greenyellow;
+  overflow: hidden;
 }
 
 .guessed-word {

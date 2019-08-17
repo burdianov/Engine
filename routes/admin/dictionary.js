@@ -1,23 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-const Dictionary = require('../../models/Dictionary');
+const Dictionary = require("../../models/Dictionary");
 
-const { check, validationResult } = require('express-validator');
+const { check, validationResult } = require("express-validator");
 
 // @route   POST api/admin/dictionary
 // @desc    Create dictionary entry
 // @access  Private (admin)
 router.post(
-  '/dictionary',
+  "/dictionary",
   [
     [
-      check('eng', 'English word is required')
+      check("eng", "English word is required")
         .not()
         .isEmpty()
     ],
     [
-      check('rus', 'Russian word is required')
+      check("rus", "Russian word is required")
         .not()
         .isEmpty()
     ]
@@ -38,10 +38,10 @@ router.post(
       let entry = await Dictionary.findOne({ eng });
 
       if (entry) {
-        entry = await Dictionary.findOneAndUpdate({
-          rus
-        });
-
+        const filter = { eng };
+        const update = { rus };
+        entry = await Dictionary.findOneAndUpdate(filter, update);
+        console.log(entry);
         return res.json(entry);
       }
 
@@ -50,7 +50,7 @@ router.post(
       res.json(entry);
     } catch (err) {
       console.error(err.message);
-      res.status(500).send('Server Error');
+      res.status(500).send("Server Error");
     }
   }
 );

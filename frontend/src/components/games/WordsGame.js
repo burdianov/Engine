@@ -56,8 +56,19 @@ const WordsGame = ({
   );
 
   const gameOverSpring = useSpring({
-    opacity: 1,
-    from: { opacity: 0 }
+    height: gameOver ? 500 : 0
+  });
+
+  const { backgroundColor, marginLeft, display, height, opacity } = useSpring({
+    // opacity: isToggled ? 1 : 0,
+    // fontSize: isToggled ? '2rem' : '5em',
+    // backgroundColor: gameOver ? "tomato" : "green",
+    marginLeft: gameOver ? "100px" : "-100px",
+    height: gameOver ? "0" : "500px",
+    opacity: gameOver ? 1 : 0
+    // y: isToggled ? 0 : 1
+    // y: isToggled ? 0 : -50
+    // transform: isToggled ? 'translate3d(0,0,0)' : 'translate3d(0,-50px,0)'
   });
 
   const handleClick = code => {
@@ -99,39 +110,44 @@ const WordsGame = ({
   return (
     <div className="page">
       <h1 className="text-center">Words</h1>
-      {!gameOver && (
-        <div className="cards">
-          <div className="cards-row">
-            {wordsEng.map((word, index) => (
-              <animated.div
-                key={word.eng}
-                style={springsEng[index]}
-                className={`card ${word.engId === engId ? "guessed-word" : ""}`}
-                onClick={() => handleClick(`eng${word.engId}`)}
-              >
-                {word.eng}
-              </animated.div>
-            ))}
-          </div>
-          <div className="cards-row">
-            {wordsRus.map((word, index) => (
-              <animated.div
-                key={word.rus}
-                style={springsRus[index]}
-                className={`card ${word.rusId === rusId ? "guessed-word" : ""}`}
-                onClick={() => handleClick(`rus${word.rusId}`)}
-              >
-                {word.rus}
-              </animated.div>
-            ))}
-          </div>
+
+      <animated.div
+        style={{ backgroundColor, display, height }}
+        className="words-to-guess"
+      >
+        <div className="words-to-guess-row">
+          {wordsEng.map((word, index) => (
+            <animated.div
+              key={word.eng}
+              style={springsEng[index]}
+              className={`word-to-guess ${
+                word.engId === engId ? "guessed-word" : ""
+              }`}
+              onClick={() => handleClick(`eng${word.engId}`)}
+            >
+              {word.eng}
+            </animated.div>
+          ))}
         </div>
-      )}
-      {gameOver && (
-        <animated.div className="game-over" style={gameOverSpring}>
-          <h1>Game Over</h1>
-        </animated.div>
-      )}
+        <div className="words-to-guess-row">
+          {wordsRus.map((word, index) => (
+            <animated.div
+              key={word.rus}
+              style={springsRus[index]}
+              className={`word-to-guess ${
+                word.rusId === rusId ? "guessed-word" : ""
+              }`}
+              onClick={() => handleClick(`rus${word.rusId}`)}
+            >
+              {word.rus}
+            </animated.div>
+          ))}
+        </div>
+      </animated.div>
+
+      <animated.div className="game-over" style={gameOverSpring}>
+        <h1>Game Over</h1>
+      </animated.div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import powerPhrases from '../../assets/power-phrases.mp3';
+import React, { useState } from "react";
+import powerPhrases from "../../assets/i-want-to-meet-you.mp3";
+import UploadFile from "../admin/UploadFile";
 
 const Classroom = props => {
   const [data, setData] = useState({
@@ -33,10 +34,11 @@ const Classroom = props => {
       <h1>Lesson</h1>
       <button
         onClick={playSound}
-        className={`btn btn-success ${isPlaying && 'disabled'}`}
+        className={`btn btn-success ${isPlaying && "disabled"}`}
       >
         Play
       </button>
+      {/* <UploadFile /> */}
     </div>
   );
 };

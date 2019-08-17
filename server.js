@@ -1,15 +1,15 @@
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
 // configure dotenv for environment variables access
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-app.disable('x-powered-by');
+app.disable("x-powered-by");
 
 // connect to the database
-const connectDB = require('./utils/db');
+const connectDB = require("./utils/db");
 connectDB();
 
 const PORT = process.env.PORT || 5000;
@@ -17,21 +17,25 @@ const PORT = process.env.PORT || 5000;
 // init middleware
 // allow using the data in req.body by applying this middleware
 app.use(express.json({ extended: false }));
+app.use("/uploads", express.static("uploads"));
+app.use("/uploads/images", express.static("uploads/images"));
+app.use("/uploads/media", express.static("uploads/media"));
 
 // import routes
-app.use('/api/user', require('./routes/user/auth'));
-app.use('/api/user', require('./routes/user/profile'));
-app.use('/api/user', require('./routes/user/dictionary'));
+app.use("/api/user", require("./routes/user/auth"));
+app.use("/api/user", require("./routes/user/profile"));
+app.use("/api/user", require("./routes/user/dictionary"));
 
-app.use('/api/admin', require('./routes/admin/dictionary'));
+app.use("/api/admin", require("./routes/admin/dictionary"));
+app.use("/api/admin", require("./routes/admin/lesson"));
 
 // serve static assets in production
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   // set static folder
-  app.use(express.static('frontend/build'));
+  app.use(express.static("frontend/build"));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 }
 
